@@ -1,3 +1,7 @@
+#Adapted the code to make it work, learning experience.
+
+
+
 # Proxy DLL Loads
 A proof of concept demonstrating the DLL-load proxying using undocumented Syscalls. This repo is not about teaching you what DLL Load proxying is and how it works, it is greatly explained on [this blogpost](https://0xdarkvortex.dev/proxying-dll-loads-for-hiding-etwti-stack-tracing/). Instead, the main focus is on finding undocumented callback functions by reversing the DLLs and creating your own version. 
 
